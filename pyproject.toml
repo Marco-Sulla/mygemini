@@ -1,0 +1,9 @@
+[project]
+name = "mygemini"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "google-genai[aiohttp]==1.62.0",
+]
