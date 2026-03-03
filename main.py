@@ -4,8 +4,9 @@ from pathlib import Path
 from google.genai import Client
 from google.genai.types import (
     GenerateContentConfig,
-    ThinkingConfig,
-    ThinkingLevel, Tool, ToolCodeExecution, GoogleSearch,
+    GoogleSearch,
+    Tool,
+    ToolCodeExecution,
 )
 
 
@@ -21,22 +22,16 @@ async def main():
         Tool(google_search=GoogleSearch()),
     ]
 
-    thinking_conf = ThinkingConfig(
-        thinking_level=ThinkingLevel.LOW,
-        include_thoughts=True,
-    )
-
     config = GenerateContentConfig(
         system_instruction="""
             My name is Marco. Write in simple text, not in markdown.
         """,
-        thinking_config=thinking_conf,
         tools=tools,
     )
 
     async with Client(api_key=api_key).aio as client:
         chat = client.chats.create(
-            model="gemini-3.1-pro-preview",
+            model="gemini-2.5-flash",
             config=config
         )
 
