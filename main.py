@@ -50,21 +50,9 @@ async def main():
                     if not text:
                         continue
 
-                    if part.thought:
-                        print("[THOUGHT - START]")
-                        print(text)
-                        print("[THOUGHT - END]")
-                    elif part.executable_code:
-                        print("[EXECUTING CODE - START]")
-                        print(text)
-                        print("[EXECUTING CODE - END]")
-                    elif part.code_execution_result:
-                        print("[CODE RESULT - START]")
-                        print(text)
-                        print("[CODE RESULT - END]")
-                    else:
-                        print(text)
+                    print(text, end = "")
 
+            print()
             print()
 
 asyncio.run(main())
