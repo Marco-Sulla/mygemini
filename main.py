@@ -17,15 +17,16 @@ async def main():
     with open(curr_dir / "api_key.txt") as f:
         api_key = f.read().strip()
 
+    with open(curr_dir / "directive.txt") as f:
+        directive = f.read()
+
     tools = [
         Tool(code_execution=ToolCodeExecution()),
         Tool(google_search=GoogleSearch()),
     ]
 
     config = GenerateContentConfig(
-        system_instruction="""
-            My name is Marco. Write in simple text, not in markdown.
-        """,
+        system_instruction=directive,
         tools=tools,
     )
 
